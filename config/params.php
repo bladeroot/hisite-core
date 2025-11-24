@@ -8,6 +8,8 @@
  * @copyright Copyright (c) 2016-2017, HiQDev (http://hiqdev.com/)
  */
 
+$mailerEnabled = isset($_ENV['MAILER_ENABLED']) ? !empty($_ENV['MAILER_ENABLED']) : true;
+
 return [
     'app.id'                => 'hisite',
     'app.name'              => 'HiSite',
@@ -19,7 +21,7 @@ return [
     'debug.allowedIps'      => explode(',', $_ENV['DEBUG_ALLOWED_IPS'] ?? '127.0.0.1'),
     'debug.historySize'     => 100,
 
-    'mailer.enabled'        => (defined('YII_ENV') && YII_ENV === 'prod') ? true : null,
+    'mailer.enabled'        => (defined('YII_ENV') && YII_ENV === 'prod') ? true : $mailerEnabled,
 
     'cookieValidationKey'   => null,
 
